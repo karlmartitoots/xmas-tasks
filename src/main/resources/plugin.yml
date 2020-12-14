@@ -1,0 +1,11 @@
+main: ee.kmtster.xmastasks.XmasTasksPlugin
+name: customcrafting
+version: 1.0
+api-version: 1.16
+description: Christmas Tasks
+author: kmtster
+
+commands:
+  xmastasks:
+    usage: /<command>
+    description: Open the Christmas Tasks UI
