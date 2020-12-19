@@ -1,5 +1,5 @@
 main: ee.kmtster.xmastasks.XmasTasksPlugin
-name: customcrafting
+name: ChristmasTasks
 version: 1.0
 api-version: 1.16
 description: Christmas Tasks
