@@ -1,17 +1,256 @@
 tasks:
 
+  craft:
+    weight: 1
+
+    CAMPFIRE:
+      weight: 20
+      min: 4
+      max: 8
+
+    CHAIN:
+      weight: 20
+      min: 8
+      max: 16
+
   slay:
     weight: 1
 
+    #### Tier 1 (common) ####
     zombie:
-      weight: 1
+      weight: 10
       min: 16
-      max: 64
+      max: 32
 
     skeleton:
+      weight: 10
+      min: 16
+      max: 32
+
+    creeper:
+      weight: 10
+      min: 16
+      max: 32
+
+    spider:
+      weight: 10
+      min: 16
+      max: 32
+
+    pig:
+      weight: 10
+      min: 8
+      max: 16
+
+    sheep:
+      weight: 10
+      min: 8
+      max: 16
+
+    cow:
+      weight: 10
+      min: 8
+      max: 16
+
+    chicken:
+      weight: 10
+      min: 8
+      max: 16
+
+    squid:
+      weight: 10
+      min: 8
+      max: 16
+
+    cod:
+      weight: 10
+      min: 16
+      max: 32
+
+    salmon:
+      weight: 10
+      min: 16
+      max: 32
+
+    drowned:
+      weight: 10
+      min: 8
+      max: 16
+
+
+    #### Tier 2 (uncommon) ####
+    husk:
+      weight: 5
+      min: 16
+      max: 32
+
+    enderman:
+      weight: 5
+      min: 16
+      max: 32
+
+    slime:
+      weight: 5
+      min: 8
+      max: 16
+
+    wither_skeleton:
+      weight: 5
+      min: 8
+      max: 32
+
+    zombified_piglin:
+      weight: 5
+      min: 8
+      max: 16
+
+    cave_spider:
+      weight: 5
+      min: 8
+      max: 32
+
+    silverfish:
+      weight: 5
+      min: 8
+      max: 16
+
+    hoglin:
+      weight: 5
+      min: 4
+      max: 8
+
+    piglin:
+      weight: 5
+      min: 16
+      max: 32
+
+    zoglin:
+      weight: 5
+      min: 8
+      max: 16
+
+    blaze:
+      weight: 5
+      min: 8
+      max: 32
+
+    magma_cube:
+      weight: 5
+      min: 8
+      max: 32
+
+
+    #### Tier 3 (rare) ####
+    phantom:
+      weight: 3
+      min: 4
+      max: 8
+
+    ghast:
+      weight: 3
+      min: 4
+      max: 8
+
+    rabbit:
+      weight: 3
+      min: 4
+      max: 8
+
+    stray:
+      weight: 3
+      min: 4
+      max: 8
+
+    bat:
+      weight: 3
+      min: 4
+      max: 8
+
+    piglin_brute:
+      weight: 3
+      min: 4
+      max: 6
+
+
+    #### Tier 4 (very rare) ####
+    endermite:
+      weight: 2
+      min: 1
+      max: 2
+
+    pillager:
+      weight: 2
+      min: 1
+      max: 2
+
+    ravager:
+      weight: 2
+      min: 1
+      max: 2
+
+    evoker:
+      weight: 2
+      min: 1
+      max: 2
+
+    vex:
+      weight: 2
+      min: 1
+      max: 2
+
+    vindicator:
+      weight: 2
+      min: 1
+      max: 2
+
+    mooshroom:
+      weight: 2
+      min: 1
+      max: 2
+
+    witch:
+      weight: 2
+      min: 1
+      max: 2
+
+    zombie_villager:
+      weight: 2
+      min: 1
+      max: 2
+
+    shulker:
+      weight: 2
+      min: 1
+      max: 2
+
+    guardian:
+      weight: 2
+      min: 1
+      max: 2
+
+
+    #### Custom ####
+#    illusioner:
+#      weight: 5
+#      min: 1
+#      max: 1
+
+    #### Bosses ####
+    elder_guardian:
       weight: 1
-      min: 20
-      max: 48
+      min: 1
+      max: 1
+
+    ender_dragon:
+      weight: 1
+      min: 1
+      max: 1
+
+    wither:
+      weight: 1
+      min: 1
+      max: 1
+
 
   acquire:
     weight: 1
@@ -24,15 +263,648 @@ tasks:
       #min: 1
       #max: 1
 
-    sand:
-      weight: 1
-      min: 64
-      max: 128
+    #### Common ####
+    quartz_block:
+      weight: 20
+      min: 16
+      max: 32
+
+    coal_block:
+      weight: 20
+      min: 16
+      max: 32
+
+    iron_block:
+      weight: 20
+      min: 8
+      max: 16
+
+    redstone_block:
+      weight: 20
+      min: 8
+      max: 16
+
+    gold_block:
+      weight: 20
+      min: 8
+      max: 16
+
+    ice:
+      weight: 20
+      min: 32
+      max: 64
+
+    carved_pumpkin:
+      weight: 20
+      min: 32
+      max: 64
+
+    polished_basalt:
+      weight: 20
+      min: 32
+      max: 64
+
+    polished_andesite:
+      weight: 20
+      min: 32
+      max: 64
+
+    polished_diorite:
+      weight: 20
+      min: 32
+      max: 64
+
+    polished_granite:
+      weight: 20
+      min: 32
+      max: 64
+
+    basalt:
+      weight: 20
+      min: 32
+      max: 64
+
+    soul_soil:
+      weight: 20
+      min: 32
+      max: 64
 
     sugar_cane:
+      weight: 20
+      min: 32
+      max: 64
+
+    bamboo:
+      weight: 20
+      min: 32
+      max: 64
+
+    beehive:
+      weight: 20
+      min: 4
+      max: 8
+
+    BLAST_FURNACE:
+      weight: 20
+      min: 4
+      max: 8
+
+    BONE_BLOCK:
+      weight: 20
+      min: 8
+      max: 16
+
+    BREWING_STAND:
+      weight: 20
+      min: 1
+      max: 3
+
+    BRICKS:
+      weight: 20
+      min: 16
+      max: 32
+
+    CAMPFIRE:
+      weight: 20
+      min: 4
+      max: 8
+
+    CHAIN:
+      weight: 20
+      min: 8
+      max: 16
+
+    CAULDRON:
+      weight: 20
+      min: 2
+      max: 8
+
+    #### Uncommon ####
+    magma_block:
+      weight: 5
+      min: 8
+      max: 16
+
+    packed_ice:
+      weight: 5
+      min: 8
+      max: 16
+
+    soul_torch:
+      weight: 5
+      min: 8
+      max: 16
+
+    soul_lantern:
+      weight: 5
+      min: 8
+      max: 16
+
+    lapis_block:
+      weight: 5
+      min: 8
+      max: 16
+
+    emerald_block:
+      weight: 5
+      min: 8
+      max: 16
+
+    honey_block:
+      weight: 5
+      min: 8
+      max: 16
+
+    honey_comb_block:
+      weight: 5
+      min: 8
+      max: 16
+
+    scaffolding:
+      weight: 5
+      min: 32
+      max: 64
+
+    cake:
+      weight: 5
+      min: 4
+      max: 8
+
+    chorus_fruit:
+      weight: 5
+      min: 32
+      max: 64
+
+    end_stone:
+      weight: 5
+      min: 32
+      max: 64
+
+    slime_block:
+      weight: 5
+      min: 4
+      max: 8
+
+    polished_blackstone:
+      weight: 5
+      min: 32
+      max: 64
+
+    CHISELED_NETHER_BRICKS:
+      weight: 5
+      min: 32
+      max: 64
+
+    CHISELED_POLISHED_BLACKSTONE:
+      weight: 5
+      min: 32
+      max: 64
+
+    CHISELED_QUARTZ_BLOCK:
+      weight: 5
+      min: 32
+      max: 64
+
+    CHISELED_RED_SANDSTONE:
+      weight: 5
+      min: 32
+      max: 64
+
+    CHISELED_SANDSTONE:
+      weight: 5
+      min: 32
+      max: 64
+
+    CHISELED_STONE_BRICKS:
+      weight: 5
+      min: 32
+      max: 64
+
+    DRIED_KELP_BLOCK:
+      weight: 5
+      min: 8
+      max: 16
+
+    GLOWSTONE:
+      weight: 5
+      min: 8
+      max: 16
+
+    JUKEBOX:
+      weight: 5
+      min: 4
+      max: 8
+
+    OBSIDIAN:
+      weight: 5
+      min: 4
+      max: 8
+
+    PODZOL:
+      weight: 5
+      min: 4
+      max: 8
+
+    SHROOMLIGHT:
+      weight: 5
+      min: 8
+      max: 16
+
+    TNT:
+      weight: 5
+      min: 4
+      max: 8
+
+    TWISTING_VINES:
+      weight: 5
+      min: 4
+      max: 8
+
+    #### Rare ####
+    sea_pickle:
+      weight: 3
+      min: 8
+      max: 16
+
+    blue_ice:
+      weight: 3
+      min: 8
+      max: 16
+
+    diamond_block:
+      weight: 3
+      min: 4
+      max: 8
+
+    mossy_cobblestone:
+      weight: 3
+      min: 16
+      max: 32
+
+    dark_prismarine:
+      weight: 3
+      min: 16
+      max: 32
+
+    sea_lantern:
+      weight: 3
+      min: 4
+      max: 8
+
+    crying_obsidian:
+      weight: 3
+      min: 8
+      max: 16
+
+    ancient_debris:
+      weight: 3
+      min: 2
+      max: 4
+
+    WITHER_SKELETON_SKULL:
+      weight: 3
+      min: 1
+      max: 3
+
+    END_ROD:
+      weight: 3
+      min: 4
+      max: 8
+
+    LODESTONE:
+      weight: 3
+      min: 1
+      max: 2
+
+    TURTLE_EGG:
+      weight: 3
+      min: 1
+      max: 2
+
+
+    #### Very Rare ####
+    CREEPER_HEAD:
       weight: 1
-      min: 64
-      max: 128
+      min: 1
+      max: 1
+
+    ZOMBIE_HEAD:
+      weight: 1
+      min: 1
+      max: 1
+
+    SKELETON_SKULL:
+      weight: 1
+      min: 1
+      max: 1
+
+    sponge:
+      weight: 1
+      min: 4
+      max: 8
+
+    nether_star:
+      weight: 1
+      min: 1
+      max: 1
+
+    beacon:
+      weight: 1
+      min: 1
+      max: 1
+
+    netherite_block:
+      weight: 1
+      min: 1
+      max: 1
+
+    conduit:
+      weight: 1
+      min: 1
+      max: 1
+
+    BLACK_SHULKER_BOX:
+      weight: 1
+      min: 1
+      max: 2
+
+    #### Silk Touched ####
+    VINE:
+      weight: 1
+      min: 4
+      max: 8
+
+    SEAGRASS:
+      weight: 1
+      min: 4
+      max: 8
+
+    MYCELIUM:
+      weight: 1
+      min: 8
+      max: 32
+
+    GRASS_BLOCK:
+      weight: 3
+      min: 8
+      max: 32
+
+    BROWN_MUSHROOM_BLOCK:
+      weight: 3
+      min: 8
+      max: 32
+
+    RED_MUSHROOM_BLOCK:
+      weight: 3
+      min: 8
+      max: 32
+
+    GILDED_BLACKSTONE:
+      weight: 3
+      min: 4
+      max: 8
+
+    bee_nest:
+      weight: 3
+      min: 2
+      max: 4
+
+    cobweb:
+      weight: 3
+      min: 16
+      max: 32
+
+    emerald_ore:
+      weight: 1
+      min: 8
+      max: 16
+
+    coal_ore:
+      weight: 5
+      min: 32
+      max: 64
+
+    diamond_ore:
+      weight: 3
+      min: 8
+      max: 16
+
+    lapis_ore:
+      weight: 3
+      min: 8
+      max: 16
+
+    redstone_ore:
+      weight: 5
+      min: 16
+      max: 32
+
+    #### Potted ####
+
+    POTTED_ACACIA_SAPLING:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_ALLIUM:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_AZURE_BLUET:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_BAMBOO:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_BIRCH_SAPLING:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_BLUE_ORCHID:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_BROWN_MUSHROOM:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_CACTUS:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_CORNFLOWER:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_CRIMSON_FUNGUS:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_CRIMSON_ROOTS:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_DANDELION:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_DARK_OAK_SAPLING:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_DEAD_BUSH:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_FERN:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_JUNGLE_SAPLING:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_LILY_OF_THE_VALLEY:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_OAK_SAPLING:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_ORANGE_TULIP:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_OXEYE_DAISY:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_PINK_TULIP:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_POPPY:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_RED_MUSHROOM:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_RED_TULIP:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_SPRUCE_SAPLING:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_WARPED_FUNGUS:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_WARPED_ROOTS:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_WHITE_TULIP:
+      weight: 5
+      min: 1
+      max: 2
+    POTTED_WITHER_ROSE:
+      weight: 5
+      min: 1
+      max: 2
+
+    #### Enchanted Items ####
+    diamond_sword:
+      weight: 10
+      enchantments:
+#        - random_sharpness
+#        - knockback_1
+        - random
+        - random
+        - random
+
+    diamond_shovel:
+      weight: 10
+      enchantments:
+        - random
+        - random
+
+    diamond_axe:
+      weight: 10
+      enchantments:
+        - random
+        - random
+
+    diamond_hoe:
+      weight: 10
+      enchantments:
+        - random
+        - random
+
+    diamond_pickaxe:
+      weight: 10
+      enchantments:
+        - random
+        - random
+
+    netherite_shovel:
+      weight: 5
+      enchantments:
+        - random
+        - random
+
+    netherite_axe:
+      weight: 5
+      enchantments:
+        - random
+        - random
+
+    netherite_hoe:
+      weight: 5
+      enchantments:
+        - random
+        - random
+
+    netherite_pickaxe:
+      weight: 5
+      enchantments:
+        - random
+        - random
+
+    netherite_sword:
+      weight: 5
+      enchantments:
+        - random
+        - random
+
+    #### Enchanted Books ####
+    enchanted_book_1:
+      weight: 30
+      enchantments:
+        - random
+
+    enchanted_book_2:
+      weight: 20
+      enchantments:
+        - random
+        - random
+
+    enchanted_book_3:
+      weight: 10
+      enchantments:
+        - random
+        - random
+        - random
+
+  trade:
+    weight: 1
+
+
 
 rewards:
 

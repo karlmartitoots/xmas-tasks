@@ -4,20 +4,20 @@ import org.bukkit.Material;
 
 import java.util.Random;
 
-public class FishingTask extends XmasTask {
-    private Material fishToCatch;
+public class CraftingTask extends XmasTask {
+    private Material itemToCraft;
     private int min;
     private int max;
 
-    public FishingTask(int weight, Material fishToCatch, int min, int max) {
-        super("fish", weight);
-        this.fishToCatch = fishToCatch;
+    public CraftingTask(int weight, Material itemToCraft, int min, int max) {
+        super("craft", weight);
+        this.itemToCraft = itemToCraft;
         this.min = min;
         this.max = max;
     }
 
-    public Material getFishToCatch() {
-        return fishToCatch;
+    public Material getItemToCraft() {
+        return itemToCraft;
     }
 
     public int getMin() {
@@ -30,7 +30,7 @@ public class FishingTask extends XmasTask {
 
     @Override
     public TaskInstance generate(Random random) {
-        return new FishingTaskInstance(this,
+        return new CraftingTaskInstance(this,
                 min == max ? min : min + random.nextInt(max - min));
     }
 }

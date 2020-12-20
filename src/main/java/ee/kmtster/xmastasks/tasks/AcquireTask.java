@@ -30,6 +30,7 @@ public class AcquireTask extends XmasTask {
 
     @Override
     public TaskInstance generate(Random random) {
-        return new AcquireTaskInstance(this, min + random.nextInt(max - min));
+        return new AcquireTaskInstance(this,
+                min == max ? min : min + random.nextInt(max - min));
     }
 }

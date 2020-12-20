@@ -4,7 +4,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;
 
-public class FishingListener implements Listener {
+public class FishingTaskListener implements Listener {
 
     @EventHandler
     public void onPlayerFishEvent(PlayerFishEvent e) {

@@ -94,8 +94,13 @@ public class XmasTasksPlugin extends JavaPlugin {
                 Material materialToCatch = Material.valueOf(key.toUpperCase());
 
                 int weight = defaultIfAbsent(section, "weight", 1);
+                if (!positive(section, "weight", weight)) continue;
+
                 int min = defaultIfAbsent(section, "min", 1);
+                if (!positive(section, "min", min)) continue;
+
                 int max = defaultIfAbsent(section, "max", 1);
+                if (!positive(section, "max", max)) continue;
 
                 taskManager.addTask("fish",
                         new FishingTask(weight,
@@ -119,8 +124,13 @@ public class XmasTasksPlugin extends JavaPlugin {
                 Material materialToAcquire = Material.valueOf(key.toUpperCase());
 
                 int weight = defaultIfAbsent(section, "weight", 1);
+                if (!positive(section, "weight", weight)) continue;
+
                 int min = defaultIfAbsent(section, "min", 1);
+                if (!positive(section, "min", min)) continue;
+
                 int max = defaultIfAbsent(section, "max", 1);
+                if (!positive(section, "max", max)) continue;
 
                 taskManager.addTask("acquire",
                         new AcquireTask(weight,
@@ -131,6 +141,16 @@ public class XmasTasksPlugin extends JavaPlugin {
                 getLogger().info(String.format("Config.yml contains incorrect key '%s' under section %s. Skipping.", key, section.getName()));
             }
         }
+    }
+
+    private boolean positive(ConfigurationSection section, String key, int value) {
+        if (value < 1) {
+            getLogger().info(String.format("Config.yml contains incorrect '%s' value '%s' under section %s. '%s' has to have a positive value. ",
+                    key, value, section.getName(), key));
+            return false;
+        }
+
+        return true;
     }
 
     private void loadSlayTasks(XmasTaskManager taskManager, FileConfiguration conf, ConfigurationOptions options) {
@@ -147,8 +167,13 @@ public class XmasTasksPlugin extends JavaPlugin {
             }
 
             int weight = defaultIfAbsent(section, "weight", 1);
+            if (!positive(section, "weight", weight)) continue;
+
             int min = defaultIfAbsent(section, "min", 1);
+            if (!positive(section, "min", min)) continue;
+
             int max = defaultIfAbsent(section, "max", 1);
+            if (!positive(section, "max", max)) continue;
 
             taskManager.addTask("slay",
                     new SlayTask(weight,

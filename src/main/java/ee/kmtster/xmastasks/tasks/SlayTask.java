@@ -30,6 +30,7 @@ public class SlayTask extends XmasTask {
 
     @Override
     public TaskInstance generate(Random random) {
-        return new SlayTaskInstance(this, min + random.nextInt(max - min));
+        return new SlayTaskInstance(this,
+                min == max ? min : min + random.nextInt(max - min));
     }
 }
