@@ -1,9 +1,10 @@
-package ee.kmtster.xmastasks;
+package ee.kmtster.xmastasks.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -46,11 +47,16 @@ public class AnvilUnsafeEnchantmentListener implements Listener {
 
         boolean isInput1Book = input1 != null && input1.getType() == Material.ENCHANTED_BOOK;
 
-        if (input0 != null
+        if (e.getSlotType() == InventoryType.SlotType.RESULT
+                && input0 != null
                 && isInput1Book && input1.hasItemMeta()) { // changes the item when output is clicked
 
             ItemStack result = createResult(input0, input1);
-            inventory.setItem(2, result.equals(input0) ? null : result);
+            if (!result.equals(input0)) {
+                e.setCursor(result);
+                inventory.setItem(0, null);
+                inventory.setItem(1, null);
+            }
 
         } else {
             scheduleChangeOutput(inventory); // checks any other clicks and changes output display

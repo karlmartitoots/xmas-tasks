@@ -1,8 +1,12 @@
+fishing_progress_period: 3
+slay_progress_period: 5
+
 tasks:
 
   craft:
     weight: 1
 
+    #### EASY ####
     CAMPFIRE:
       weight: 20
       min: 4
@@ -10,8 +14,287 @@ tasks:
 
     CHAIN:
       weight: 20
+      min: 32
+      max: 64
+
+    compass:
+      weight: 20
+      min: 4
+      max: 8
+
+    clock:
+      weight: 20
+      min: 4
+      max: 8
+
+    JACK_O_LANTERN:
+      weight: 20
+      min: 16
+      max: 32
+
+    TNT:
+      weight: 20
       min: 8
       max: 16
+
+    lantern:
+      weight: 20
+      min: 8
+      max: 16
+
+    COMPOSTER:
+      weight: 20
+      min: 4
+      max: 8
+
+    BARREL:
+      weight: 20
+      min: 4
+      max: 8
+
+    SMOKER:
+      weight: 20
+      min: 4
+      max: 8
+
+    BLAST_FURNACE:
+      weight: 20
+      min: 4
+      max: 8
+
+    CARTOGRAPHY_TABLE:
+      weight: 20
+      min: 4
+      max: 8
+
+    FLETCHING_TABLE:
+      weight: 20
+      min: 4
+      max: 8
+
+    GRINDSTONE:
+      weight: 20
+      min: 4
+      max: 8
+
+    LECTERN:
+      weight: 20
+      min: 4
+      max: 8
+
+    SMITHING_TABLE:
+      weight: 20
+      min: 4
+      max: 8
+
+    STONECUTTER:
+      weight: 20
+      min: 4
+      max: 8
+
+    magma_cream:
+      weight: 20
+      min: 8
+      max: 16
+
+    lead:
+      weight: 20
+      min: 4
+      max: 8
+
+    fire_charge:
+      weight: 20
+      min: 4
+      max: 8
+
+    FERMENTED_SPIDER_EYE:
+      weight: 20
+      min: 4
+      max: 8
+
+    honey_bottle:
+      weight: 20
+      min: 4
+      max: 8
+
+    daylight_detector:
+      weight: 20
+      min: 2
+      max: 8
+
+    target:
+      weight: 20
+      min: 4
+      max: 8
+
+    observer:
+      weight: 20
+      min: 4
+      max: 8
+
+    crossbow:
+      weight: 20
+      min: 2
+      max: 6
+
+    spectral_arrow:
+      weight: 20
+      min: 16
+      max: 32
+
+    coarse_dirt:
+      weight: 20
+      min: 32
+      max: 64
+
+    pumpkin_pie:
+      weight: 20
+      min: 8
+      max: 16
+
+    cake:
+      weight: 20
+      min: 8
+      max: 16
+
+    chiseled_stone_bricks:
+      weight: 20
+      min: 32
+      max: 64
+
+    chiseled_nether_bricks:
+      weight: 20
+      min: 32
+      max: 64
+
+    #### MEDIUM ####
+    SOUL_CAMPFIRE:
+      weight: 10
+      min: 4
+      max: 8
+
+    end_rod:
+      weight: 10
+      min: 4
+      max: 8
+
+    magma_block:
+      weight: 10
+      min: 4
+      max: 8
+
+    respawn_anchor:
+      weight: 10
+      min: 1
+      max: 3
+
+    blue_ice:
+      weight: 10
+      min: 4
+      max: 8
+
+    diamond_pickaxe:
+      weight: 10
+      min: 1
+      max: 2
+
+    diamond_boots:
+      weight: 10
+      min: 1
+      max: 2
+
+    mossy_cobblestone:
+      weight: 10
+      min: 16
+      max: 32
+
+    ender_eye:
+      weight: 10
+      min: 8
+      max: 16
+
+    golden_apple:
+      weight: 10
+      min: 2
+      max: 6
+
+    suspicious_stew:
+      weight: 10
+      min: 2
+      max: 6
+
+
+    #### HARD ####
+    PRISMARINE_BRICKS:
+      weight: 5
+      min: 4
+      max: 8
+
+    dark_prismarine:
+      weight: 5
+      min: 4
+      max: 8
+
+    sea_lantern:
+      weight: 5
+      min: 3
+      max: 6
+
+    end_crystal:
+      weight: 5
+      min: 1
+      max: 2
+
+    netherite_ingot:
+      weight: 5
+      min: 1
+      max: 2
+
+    lodestone:
+      weight: 5
+      min: 1
+      max: 1
+
+    beacon:
+      weight: 5
+      min: 1
+      max: 1
+
+    beehive:
+      weight: 5
+      min: 3
+      max: 6
+
+    conduit:
+      weight: 5
+      min: 1
+      max: 1
+
+    rabbit_stew:
+      weight: 5
+      min: 2
+      max: 4
+
+    purpur_block:
+      weight: 5
+      min: 8
+      max: 16
+
+    purpur_pillar:
+      weight: 5
+      min: 8
+      max: 16
+
+    turtle_helmet:
+      weight: 5
+      min: 1
+      max: 2
+
+    shulker_box:
+      weight: 5
+      min: 1
+      max: 2
+
 
   slay:
     weight: 1
@@ -255,14 +538,6 @@ tasks:
   acquire:
     weight: 1
 
-    #enchanted_book_1:
-      #weight: 1
-      #enchantments:
-        #power: 3
-        #infinity: 1
-      #min: 1
-      #max: 1
-
     #### Common ####
     quartz_block:
       weight: 20
@@ -415,7 +690,7 @@ tasks:
       min: 8
       max: 16
 
-    honey_comb_block:
+    honeycomb_block:
       weight: 5
       min: 8
       max: 16
@@ -820,64 +1095,62 @@ tasks:
 
     #### Enchanted Items ####
     diamond_sword:
-      weight: 10
+      weight: 3
       enchantments:
-#        - random_sharpness
-#        - knockback_1
         - random
         - random
         - random
 
     diamond_shovel:
-      weight: 10
+      weight: 3
       enchantments:
         - random
         - random
 
     diamond_axe:
-      weight: 10
+      weight: 3
       enchantments:
         - random
         - random
 
     diamond_hoe:
-      weight: 10
+      weight: 3
       enchantments:
         - random
         - random
 
     diamond_pickaxe:
-      weight: 10
+      weight: 3
       enchantments:
         - random
         - random
 
     netherite_shovel:
-      weight: 5
+      weight: 1
       enchantments:
         - random
         - random
 
     netherite_axe:
-      weight: 5
+      weight: 1
       enchantments:
         - random
         - random
 
     netherite_hoe:
-      weight: 5
+      weight: 1
       enchantments:
         - random
         - random
 
     netherite_pickaxe:
-      weight: 5
+      weight: 1
       enchantments:
         - random
         - random
 
     netherite_sword:
-      weight: 5
+      weight: 1
       enchantments:
         - random
         - random
@@ -904,6 +1177,199 @@ tasks:
   trade:
     weight: 1
 
+    emerald:
+      weight: 50
+
+    #### Novice ####
+
+    cooked_cod:
+      weight: 20
+
+    cod_bucket:
+      weight: 20
+
+    REDSTONE:
+      weight: 20
+
+    rabbit_stew:
+      weight: 20
+
+    enchanted_book:
+      weight: 20
+
+    bookshelf:
+      weight: 20
+
+    shears:
+      weight: 20
+
+    #### Apprentice ####
+    bell:
+      weight: 10
+
+    cooked_salmon:
+      weight: 10
+
+    pumpkin_pie:
+      weight: 10
+
+    apple:
+      weight: 10
+
+    lapis_lazuli:
+      weight: 10
+
+    #### Journeyman ####
+    cooked_beef:
+      weight: 5
+
+    diamond_hoe:
+      weight: 5
+
+    crossbow:
+      weight: 5
+
+    cookie:
+      weight: 5
+
+    glowstone:
+      weight: 5
+
+    polished_andesite:
+      weight: 5
+
+    polished_granite:
+      weight: 5
+
+    polished_diorite:
+      weight: 5
+
+    #### Expert ####
+    item_frame:
+      weight: 3
+
+    cake:
+      weight: 3
+
+    diamond_boots:
+      weight: 3
+
+    ender_pearl:
+      weight: 3
+
+    suspicious_stew:
+      weight: 3
+
+    clock:
+      weight: 3
+
+    diamond_axe:
+      weight: 3
+
+
+    #### Master ####
+    diamond_chestplate:
+      weight: 1
+
+    diamond_pickaxe:
+      weight: 1
+
+    EXPERIENCE_BOTTLE:
+      weight: 1
+
+    golden_carrot:
+      weight: 1
+
+    tipped_arrow:
+      weight: 1
+
+    saddle:
+      weight: 1
+
+    name_tag:
+      weight: 1
+
+    quartz_block:
+      weight: 1
+
+    painting:
+      weight: 1
+
+    diamond_sword:
+      weight: 1
+
+
+  fish:
+    weight: 1
+
+    #### Fish ####
+    cod:
+      weight: 20
+      min: 8
+      max: 16
+
+    salmon:
+      weight: 20
+      min: 8
+      max: 16
+
+    tropical_fish:
+      weight: 20
+      min: 8
+      max: 16
+
+    pufferfish:
+      weight: 20
+      min: 8
+      max: 16
+
+    #### Treasure ####
+    enchanted_book:
+      weight: 10
+      min: 1
+      max: 2
+
+    saddle:
+      weight: 10
+      min: 1
+      max: 2
+
+    name_tag:
+      weight: 10
+      min: 1
+      max: 2
+
+    nautilus_shell:
+      weight: 10
+      min: 1
+      max: 2
+
+    fishing_rod:
+      weight: 10
+      min: 1
+      max: 2
+
+    bow:
+      weight: 10
+      min: 1
+      max: 2
+
+    #### Junk ####
+    leather:
+      weight: 5
+      min: 2
+      max: 4
+
+    bowl:
+      weight: 5
+      min: 2
+      max: 4
+
+    lily_pad:
+      weight: 5
+      min: 2
+      max: 4
+
 
 
 rewards:
@@ -911,4 +1377,139 @@ rewards:
   enchanted_book_1:
     weight: 1
     enchantments:
-      power: 6
+      - power|6
+
+  enchanted_book_2:
+    weight: 1
+    enchantments:
+      - bane_of_arthropods|6
+
+  enchanted_book_3:
+    weight: 1
+    enchantments:
+      - blast_protection|5
+
+  enchanted_book_4:
+    weight: 1
+    enchantments:
+      - depth_strider|4
+
+  enchanted_book_5:
+    weight: 1
+    enchantments:
+      - efficiency|6
+
+  enchanted_book_6:
+    weight: 1
+    enchantments:
+      - feather_falling|5
+
+  enchanted_book_7:
+    weight: 1
+    enchantments:
+      - fire_aspect|3
+
+  enchanted_book_8:
+    weight: 1
+    enchantments:
+      - fire_protection|5
+
+  enchanted_book_9:
+    weight: 1
+    enchantments:
+      - fortune|4
+
+  enchanted_book_10:
+    weight: 1
+    enchantments:
+      - frost_walker|3
+
+  enchanted_book_11:
+    weight: 1
+    enchantments:
+      - impaling|6
+
+  enchanted_book_12:
+    weight: 1
+    enchantments:
+      - knockback|3
+
+  enchanted_book_13:
+    weight: 1
+    enchantments:
+      - looting|4
+
+  enchanted_book_14:
+    weight: 1
+    enchantments:
+      - loyalty|4
+
+  enchanted_book_15:
+    weight: 1
+    enchantments:
+      - luck_of_the_sea|4
+
+  enchanted_book_16:
+    weight: 1
+    enchantments:
+      - lure|4
+
+  enchanted_book_17:
+    weight: 1
+    enchantments:
+      - piercing|5
+
+  enchanted_book_18:
+    weight: 1
+    enchantments:
+      - projectile_protection|5
+
+  enchanted_book_19:
+    weight: 1
+    enchantments:
+      - punch|3
+
+  enchanted_book_20:
+    weight: 1
+    enchantments:
+      - quick_charge|4
+
+  enchanted_book_21:
+    weight: 1
+    enchantments:
+      - respiration|4
+
+  enchanted_book_22:
+    weight: 1
+    enchantments:
+      - riptide|4
+
+  enchanted_book_23:
+    weight: 1
+    enchantments:
+      - sharpness|6
+
+  enchanted_book_24:
+    weight: 1
+    enchantments:
+      - smite|6
+
+  enchanted_book_25:
+    weight: 1
+    enchantments:
+      - soul_speed|4
+
+  enchanted_book_26:
+    weight: 1
+    enchantments:
+      - sweeping|4
+
+  enchanted_book_27:
+    weight: 1
+    enchantments:
+      - thorns|4
+
+  enchanted_book_28:
+    weight: 1
+    enchantments:
+      - unbreaking|4

@@ -16,6 +16,13 @@ public class AcquireTask extends XmasTask {
         this.max = max;
     }
 
+    public AcquireTask(int weight, Material itemToAcquire) { // default 1
+        super("acquire", weight);
+        this.itemToAcquire = itemToAcquire;
+        this.min = 1;
+        this.max = 1;
+    }
+
     public Material getItemToAcquire() {
         return itemToAcquire;
     }

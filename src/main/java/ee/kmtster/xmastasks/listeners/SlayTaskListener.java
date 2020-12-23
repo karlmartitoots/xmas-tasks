@@ -1,5 +1,7 @@
-package ee.kmtster.xmastasks;
+package ee.kmtster.xmastasks.listeners;
 
+import ee.kmtster.xmastasks.XmasTaskManager;
+import ee.kmtster.xmastasks.XmasTasksPlugin;
 import ee.kmtster.xmastasks.tasks.SlayTaskInstance;
 import ee.kmtster.xmastasks.tasks.TaskInstance;
 import org.bukkit.Bukkit;
@@ -14,10 +16,12 @@ public class SlayTaskListener implements Listener {
 
     private final XmasTasksPlugin plugin;
     private final XmasTaskManager taskManager;
+    private final int progressPeriod;
 
-    public SlayTaskListener(XmasTasksPlugin plugin, XmasTaskManager taskManager) {
+    public SlayTaskListener(XmasTasksPlugin plugin, XmasTaskManager taskManager, int progressPeriod) {
         this.plugin = plugin;
         this.taskManager = taskManager;
+        this.progressPeriod = progressPeriod;
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -37,13 +41,21 @@ public class SlayTaskListener implements Listener {
         if (!(taskInstance instanceof SlayTaskInstance))
             return;
 
+        if (taskInstance.isFinished()) { // already finished
+            killer.sendMessage(String.format("%sYou have already completed your Christmas Task. Claim your prize using /xmastasks reward.", ChatColor.YELLOW));
+            return;
+        }
+
         SlayTaskInstance slayTaskInstance = (SlayTaskInstance) taskInstance;
-        if (!killed.equals(slayTaskInstance.getTask().getMobToKill()))
+        if (!killed.equals(slayTaskInstance.getTask().getMobToKill())) // correct mob
             return;
 
-        if (!slayTaskInstance.isFinished())
-            slayTaskInstance.decrement();
-        else
-            killer.sendMessage(String.format("%sYou have completed your Christmas Task!", ChatColor.YELLOW));
+        slayTaskInstance.decrement();
+
+        if (taskInstance.isFinished()) // just finished
+            killer.sendMessage(String.format("%sYou have completed your Christmas Task! Claim your prize using /xmastasks reward.", ChatColor.YELLOW));
+        else if (slayTaskInstance.getLeftToKill() % 5 == 0)
+            killer.sendMessage(slayTaskInstance.progress());
+
     }
 }

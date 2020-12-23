@@ -17,6 +17,10 @@ public class AcquireTaskInstance implements TaskInstance {
         return task;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
     public void finish() {
         this.finished = true;
     }
@@ -27,8 +31,18 @@ public class AcquireTaskInstance implements TaskInstance {
     }
 
     @Override
-    public String toString() {
-        return String.format("%sYour task is to acquire %s%s %sof %s%s.",
+    public String progress() {
+        return String.format("%sYour task to obtain a %s%s %sis %sfinished.",
+                ChatColor.YELLOW,
+                ChatColor.GREEN,
+                task.getItemToAcquire().name().toLowerCase().replace("_", " "),
+                ChatColor.YELLOW,
+                isFinished() ? "" : "not ");
+    }
+
+    @Override
+    public String display() {
+        return String.format("%sYour task is to obtain %s%s %sof %s%s.",
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
                 amount,

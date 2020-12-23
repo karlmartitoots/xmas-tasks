@@ -2,17 +2,20 @@ package ee.kmtster.xmastasks;
 
 import ee.kmtster.xmastasks.tasks.TaskInstance;
 import ee.kmtster.xmastasks.tasks.XmasTask;
-import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Supplier;
 
 public class XmasTaskManager {
     private final Map<UUID, TaskInstance> playersTasks = new ConcurrentHashMap<>();
-    private final List<String> defaultCategories = Arrays.asList("mine", "craft", "slay", "acquire", "fish", "trade");
-    private final RandomCollection<String> categories = new RandomCollection<>();
+    private final RandomCollection<String> taskCategories = new RandomCollection<>();
     private final Map<String, RandomCollection<XmasTask>> tasks = new LinkedHashMap<>();
+    private final RandomCollection<Supplier<ItemStack>> rewards = new RandomCollection<>();
     private final Random random = new Random();
 
     // Randomly generate a new task
@@ -20,7 +23,7 @@ public class XmasTaskManager {
         if (hasTask(player))
             return readTask(player);
 
-        String category = categories.next();
+        String category = taskCategories.next();
         XmasTask task = tasks.get(category).next();
         TaskInstance taskInstance = task.generate(random);
 
@@ -29,10 +32,6 @@ public class XmasTaskManager {
     }
 
     public TaskInstance readTask(Player player) {
-        Bukkit.getLogger().info("read PlayersTasks: ");
-        for (UUID p : playersTasks.keySet()) {
-            Bukkit.getLogger().info(String.format("%s: %s", p, playersTasks.get(p) ));
-        }
         return playersTasks.get(player.getUniqueId());
     }
 
@@ -44,8 +43,9 @@ public class XmasTaskManager {
         return playersTasks.remove(player.getUniqueId());
     }
 
+
     void addTaskCategory(String cat, int weight) {
-        categories.add(weight, cat);
+        taskCategories.add(weight, cat);
     }
 
     void addTask(String category, XmasTask task) {
@@ -64,7 +64,24 @@ public class XmasTaskManager {
         }
     }
 
-    public List<String> getDefaultCategories() {
-        return defaultCategories;
+    public static ItemStack present() {
+        String url = "http://textures.minecraft.net/texture/2ebcd2159856d795c8915e8f59a8434c8e935a45a43fa71f0809789be75e3de2";
+        ItemStack present = SkullCreator.itemFromUrl(url);
+
+        SkullMeta presentMeta = (SkullMeta) present.getItemMeta();
+        presentMeta.setDisplayName(ChatColor.RED + "Christmas Present");
+        presentMeta.setLore(Collections.singletonList(String.format("%s%sFrom Santa", ChatColor.GREEN, ChatColor.ITALIC)));
+
+        present.setItemMeta(presentMeta);
+
+        return present;
+    }
+
+    void addReward(Supplier<ItemStack> rewardSupplier, int weight) {
+        rewards.add(weight, rewardSupplier);
+    }
+
+    public ItemStack nextReward() {
+        return rewards.next().get();
     }
 }

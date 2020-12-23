@@ -2,7 +2,7 @@ package ee.kmtster.xmastasks.tasks;
 
 import org.bukkit.ChatColor;
 
-public class SlayTaskInstance implements TaskInstance{
+public class SlayTaskInstance implements TaskInstance {
     private final SlayTask task;
     private int leftToKill;
 
@@ -29,7 +29,19 @@ public class SlayTaskInstance implements TaskInstance{
     }
 
     @Override
-    public String toString() {
+    public String progress() {
+        return String.format("%s(Christmas Task) %s%s %sof %s%s %sleft to slay.",
+                ChatColor.YELLOW,
+                ChatColor.GREEN,
+                leftToKill,
+                ChatColor.YELLOW,
+                ChatColor.GREEN,
+                task.getMobToKill().name().toLowerCase().replace("_", " "),
+                ChatColor.YELLOW);
+    }
+
+    @Override
+    public String display() {
         return String.format("%sYour task is to slay %s%s %sof %s%s.",
                 ChatColor.YELLOW,
                 ChatColor.GREEN,

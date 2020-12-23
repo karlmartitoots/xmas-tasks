@@ -2,14 +2,25 @@ package ee.kmtster.xmastasks.commands;
 
 import ee.kmtster.xmastasks.XmasTaskManager;
 import ee.kmtster.xmastasks.XmasTasksPlugin;
+import ee.kmtster.xmastasks.tasks.AcquireTaskInstance;
+import ee.kmtster.xmastasks.tasks.EnchantedItemAcquireTaskInstance;
 import ee.kmtster.xmastasks.tasks.TaskInstance;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.command.*;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.plugin.Plugin;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import static ee.kmtster.xmastasks.XmasTaskManager.present;
 
 public class XmasTaskCommandExecutor implements TabExecutor {
     private final Plugin plugin;
@@ -74,12 +85,18 @@ public class XmasTaskCommandExecutor implements TabExecutor {
         }
 
         TaskInstance currentTask = taskManager.readTask(p);
+        if (currentTask instanceof AcquireTaskInstance)
+            checkAcquireTask(p, (AcquireTaskInstance) currentTask);
+
         if (!currentTask.isFinished()) {
             p.sendMessage(String.format("%sYour current Christmas Task is not finished yet.", ChatColor.YELLOW));
-            p.sendMessage(currentTask.toString());
+            p.sendMessage(currentTask.display());
         } else {
             p.sendMessage(String.format("%sWell done! Santa has given you a reward for completing the task.", ChatColor.YELLOW));
 
+            p.getWorld().dropItem(p.getLocation(), present());
+
+            deleteTask(p);
         }
 
         return true;
@@ -104,10 +121,13 @@ public class XmasTaskCommandExecutor implements TabExecutor {
         }
 
         TaskInstance currentTask = taskManager.readTask(p);
+        if (currentTask instanceof AcquireTaskInstance)
+            checkAcquireTask(p, (AcquireTaskInstance) currentTask);
+
         if (currentTask.isFinished())
             p.sendMessage(String.format("%sYour current Christmas Task is completed! Claim your reward with %s/xmastasks reward.", ChatColor.YELLOW, ChatColor.GREEN));
         else
-            p.sendMessage(currentTask.toString());
+            p.sendMessage(currentTask.display());
 
         return true;
     }
@@ -115,16 +135,96 @@ public class XmasTaskCommandExecutor implements TabExecutor {
     private boolean newTask(Player p) {
         if (taskManager.hasTask(p)) {
             p.sendMessage(String.format("%sYou currently already have a Christmas Task.", ChatColor.YELLOW));
-            p.sendMessage(taskManager.readTask(p).toString());
+            p.sendMessage(taskManager.readTask(p).display());
             return true;
         }
 
         taskManager.createTask(p);
-        return currentTask(p);
+
+        TaskInstance currentTask = taskManager.readTask(p);
+
+        p.sendMessage(currentTask.display());
+        if (currentTask instanceof AcquireTaskInstance)
+            checkAcquireTask(p, (AcquireTaskInstance) currentTask);
+
+        if (currentTask.isFinished())
+            p.sendMessage(String.format("%sYour current Christmas Task is completed! Claim your reward with %s/xmastasks reward.", ChatColor.YELLOW, ChatColor.GREEN));
+
+        return true;
     }
 
     private boolean help(Player p) {
-        p.sendMessage("Help here");
+        p.sendMessage(String.format("%s===============       %sCh%sri%sst%smas %sTa%ssk%ss      %s===============",ChatColor.WHITE,
+                ChatColor.RED, ChatColor.GREEN,
+                ChatColor.RED, ChatColor.GREEN,
+                ChatColor.RED, ChatColor.GREEN,
+                ChatColor.RED,ChatColor.WHITE));
+
+        p.sendMessage(String.format("  %s%sCommands:", ChatColor.DARK_BLUE, ChatColor.BOLD));
+        p.sendMessage(String.format("  %s/xmastasks help %s.. %s%sThis information page", ChatColor.YELLOW, ChatColor.WHITE, ChatColor.ITALIC, ChatColor.BLUE));
+        p.sendMessage(String.format("  %s/xmastasks new %s.. %s%sAssign a new task", ChatColor.YELLOW, ChatColor.WHITE, ChatColor.ITALIC, ChatColor.BLUE));
+        p.sendMessage(String.format("  %s/xmastasks current %s.. %s%sDisplay current christmas task", ChatColor.YELLOW, ChatColor.WHITE, ChatColor.ITALIC, ChatColor.BLUE));
+        p.sendMessage(String.format("  %s/xmastasks delete %s.. %s%sRemove current task (5-minute cooldown)", ChatColor.YELLOW, ChatColor.WHITE, ChatColor.ITALIC, ChatColor.BLUE));
+        p.sendMessage(String.format("  %s/xmastasks reward %s.. %s%sClaim reward after completing the task", ChatColor.YELLOW, ChatColor.WHITE, ChatColor.ITALIC, ChatColor.BLUE));
+        p.sendMessage(String.format("  %s/xmastasks leaderboard %s.. %s%sSee player leaderboards", ChatColor.YELLOW, ChatColor.WHITE, ChatColor.ITALIC, ChatColor.BLUE));
+
+        p.sendMessage(String.format("%s===============                                 ===============",ChatColor.WHITE));
         return true;
+    }
+
+    private void checkAcquireTask(Player p, AcquireTaskInstance taskInstance) {
+        Inventory inv = p.getInventory();
+        if (!inv.contains(taskInstance.getTask().getItemToAcquire()))
+            return;
+
+        Map<Integer, ItemStack> itemsBySlot = (Map<Integer, ItemStack>) inv.all(taskInstance.getTask().getItemToAcquire());
+        if (taskInstance instanceof EnchantedItemAcquireTaskInstance) {
+
+            checkEnchantedItemAcquireTask(itemsBySlot, (EnchantedItemAcquireTaskInstance) taskInstance);
+
+        } else {
+
+            Optional<Integer> amount = itemsBySlot.keySet().stream().map(slot -> itemsBySlot.get(slot).getAmount()).reduce(Integer::sum);
+            if (amount.isPresent() && taskInstance.getAmount() <= amount.get()) {
+                taskInstance.finish();
+            }
+
+        }
+    }
+
+    private void checkEnchantedItemAcquireTask(Map<Integer, ItemStack> itemsBySlot, EnchantedItemAcquireTaskInstance enchantedItemAcquireTaskInstance) {
+        if (enchantedItemAcquireTaskInstance.getTask().getItemToAcquire() == Material.ENCHANTED_BOOK) {
+
+            for (Integer slot : itemsBySlot.keySet()) {
+                ItemStack item = itemsBySlot.get(slot);
+                if (!item.hasItemMeta()) continue;
+
+                EnchantmentStorageMeta bookMeta = (EnchantmentStorageMeta) item.getItemMeta();
+
+                Map<Enchantment, Integer> requireds = enchantedItemAcquireTaskInstance.getEnchantments();
+                if (requireds.keySet().stream().allMatch(req -> bookMeta.getEnchantLevel(req) == requireds.get(req) || bookMeta.getStoredEnchantLevel(req) == requireds.get(req))) {
+                    enchantedItemAcquireTaskInstance.finish();
+                    return;
+                }
+
+            }
+
+        } else {
+
+            for (Integer slot : itemsBySlot.keySet()) {
+
+                ItemStack enchantedItem = itemsBySlot.get(slot);
+                if (allRequiredEnchantmentsMatch(enchantedItem, enchantedItemAcquireTaskInstance.getEnchantments())) {
+                    enchantedItemAcquireTaskInstance.finish();
+                    return;
+                }
+
+            }
+
+        }
+    }
+
+    private boolean allRequiredEnchantmentsMatch(ItemStack item, Map<Enchantment, Integer> requireds) {
+        return requireds.keySet().stream().allMatch(req -> item.getEnchantmentLevel(req) == requireds.get(req));
     }
 }
