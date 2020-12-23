@@ -16,16 +16,13 @@ public class CraftingTask extends XmasTask {
         this.max = max;
     }
 
+    public CraftingTask(Material itemToCraft) {
+        super("craft");
+        this.itemToCraft = itemToCraft;
+    }
+
     public Material getItemToCraft() {
         return itemToCraft;
-    }
-
-    public int getMin() {
-        return min;
-    }
-
-    public int getMax() {
-        return max;
     }
 
     @Override

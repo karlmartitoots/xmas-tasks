@@ -16,16 +16,13 @@ public class FishingTask extends XmasTask {
         this.max = max;
     }
 
+    public FishingTask(Material fishToCatch) {
+        super("fish");
+        this.fishToCatch = fishToCatch;
+    }
+
     public Material getFishToCatch() {
         return fishToCatch;
-    }
-
-    public int getMin() {
-        return min;
-    }
-
-    public int getMax() {
-        return max;
     }
 
     @Override

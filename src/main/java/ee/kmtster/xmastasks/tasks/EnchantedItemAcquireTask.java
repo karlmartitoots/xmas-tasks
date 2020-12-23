@@ -14,8 +14,19 @@ public class EnchantedItemAcquireTask extends AcquireTask {
         super(weight, enchantedItemToAcquire);
         this.enchantments = enchantments;
     }
+
+    public EnchantedItemAcquireTask(Material enchantedItemToAcquire, List<String> enchantments) {
+        super(enchantedItemToAcquire);
+        this.enchantments = enchantments;
+    }
+
     public EnchantedItemAcquireTask(int weight, List<String> enchantments) {
         super(weight, Material.ENCHANTED_BOOK);
+        this.enchantments = enchantments;
+    }
+
+    public EnchantedItemAcquireTask(List<String> enchantments) {
+        super(Material.ENCHANTED_BOOK);
         this.enchantments = enchantments;
     }
 

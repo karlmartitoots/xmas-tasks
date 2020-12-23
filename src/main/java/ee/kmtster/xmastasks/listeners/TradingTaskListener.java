@@ -1,6 +1,6 @@
 package ee.kmtster.xmastasks.listeners;
 
-import ee.kmtster.xmastasks.XmasTaskManager;
+import ee.kmtster.xmastasks.tasks.XmasTaskManager;
 import ee.kmtster.xmastasks.XmasTasksPlugin;
 import ee.kmtster.xmastasks.tasks.TradingTaskInstance;
 import org.bukkit.Bukkit;

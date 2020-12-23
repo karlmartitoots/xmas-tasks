@@ -1,5 +1,7 @@
-package ee.kmtster.xmastasks;
+package ee.kmtster.xmastasks.tasks;
 
+import ee.kmtster.xmastasks.RandomCollection;
+import ee.kmtster.xmastasks.SkullCreator;
 import ee.kmtster.xmastasks.tasks.TaskInstance;
 import ee.kmtster.xmastasks.tasks.XmasTask;
 import org.bukkit.ChatColor;
@@ -44,18 +46,18 @@ public class XmasTaskManager {
     }
 
 
-    void addTaskCategory(String cat, int weight) {
+    public void addTaskCategory(String cat, int weight) {
         taskCategories.add(weight, cat);
     }
 
-    void addTask(String category, XmasTask task) {
+    public void addTask(String category, XmasTask task) {
         if (!tasks.containsKey(category))
             tasks.put(category, new RandomCollection<>());
 
         tasks.get(category).add(task.getWeight(), task);
     }
 
-    void addTasks(String category, List<XmasTask> added) {
+    public void addTasks(String category, List<XmasTask> added) {
         if (!tasks.containsKey(category))
             tasks.put(category, new RandomCollection<>());
 
@@ -70,14 +72,14 @@ public class XmasTaskManager {
 
         SkullMeta presentMeta = (SkullMeta) present.getItemMeta();
         presentMeta.setDisplayName(ChatColor.RED + "Christmas Present");
-        presentMeta.setLore(Collections.singletonList(String.format("%s%sFrom Santa", ChatColor.GREEN, ChatColor.ITALIC)));
+        presentMeta.setLore(Collections.singletonList(String.format("%s%sFrom Santa. Right-click to open", ChatColor.GREEN, ChatColor.ITALIC)));
 
         present.setItemMeta(presentMeta);
 
         return present;
     }
 
-    void addReward(Supplier<ItemStack> rewardSupplier, int weight) {
+    public void addReward(Supplier<ItemStack> rewardSupplier, int weight) {
         rewards.add(weight, rewardSupplier);
     }
 

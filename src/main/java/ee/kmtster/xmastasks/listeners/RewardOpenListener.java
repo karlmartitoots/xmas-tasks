@@ -1,6 +1,6 @@
 package ee.kmtster.xmastasks.listeners;
 
-import ee.kmtster.xmastasks.XmasTaskManager;
+import ee.kmtster.xmastasks.tasks.XmasTaskManager;
 import ee.kmtster.xmastasks.XmasTasksPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -10,7 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-import static ee.kmtster.xmastasks.XmasTaskManager.present;
+import static ee.kmtster.xmastasks.tasks.XmasTaskManager.present;
 import static org.bukkit.Particle.SNOW_SHOVEL;
 
 public class RewardOpenListener implements Listener {

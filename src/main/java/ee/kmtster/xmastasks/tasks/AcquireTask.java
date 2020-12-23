@@ -23,6 +23,11 @@ public class AcquireTask extends XmasTask {
         this.max = 1;
     }
 
+    public AcquireTask(Material itemToAcquire) {
+        super("acquire");
+        this.itemToAcquire = itemToAcquire;
+    }
+
     public Material getItemToAcquire() {
         return itemToAcquire;
     }

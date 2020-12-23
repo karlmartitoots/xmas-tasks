@@ -12,6 +12,11 @@ public class TradingTask extends XmasTask {
         this.materialToReceive = materialToReceive;
     }
 
+    public TradingTask(Material materialToReceive) {
+        super("trade");
+        this.materialToReceive = materialToReceive;
+    }
+
     public Material getMaterialToReceive() {
         return materialToReceive;
     }

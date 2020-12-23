@@ -2,7 +2,7 @@ package ee.kmtster.xmastasks.tasks;
 
 import org.bukkit.ChatColor;
 
-public class TradingTaskInstance implements TaskInstance {
+public class TradingTaskInstance implements TaskInstance<TradingTask> {
     private final TradingTask task;
     private boolean finished;
 

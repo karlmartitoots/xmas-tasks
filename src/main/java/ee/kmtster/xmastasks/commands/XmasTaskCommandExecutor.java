@@ -1,6 +1,6 @@
 package ee.kmtster.xmastasks.commands;
 
-import ee.kmtster.xmastasks.XmasTaskManager;
+import ee.kmtster.xmastasks.tasks.XmasTaskManager;
 import ee.kmtster.xmastasks.XmasTasksPlugin;
 import ee.kmtster.xmastasks.tasks.AcquireTaskInstance;
 import ee.kmtster.xmastasks.tasks.EnchantedItemAcquireTaskInstance;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static ee.kmtster.xmastasks.XmasTaskManager.present;
+import static ee.kmtster.xmastasks.tasks.XmasTaskManager.present;
 
 public class XmasTaskCommandExecutor implements TabExecutor {
     private final Plugin plugin;
@@ -40,7 +40,7 @@ public class XmasTaskCommandExecutor implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("Only usable by players");
+            sender.sendMessage("Only usable by playerfiles");
             return true;
         }
 
@@ -90,7 +90,7 @@ public class XmasTaskCommandExecutor implements TabExecutor {
 
         if (!currentTask.isFinished()) {
             p.sendMessage(String.format("%sYour current Christmas Task is not finished yet.", ChatColor.YELLOW));
-            p.sendMessage(currentTask.display());
+            p.sendMessage(currentTask.progress());
         } else {
             p.sendMessage(String.format("%sWell done! Santa has given you a reward for completing the task.", ChatColor.YELLOW));
 
@@ -127,7 +127,7 @@ public class XmasTaskCommandExecutor implements TabExecutor {
         if (currentTask.isFinished())
             p.sendMessage(String.format("%sYour current Christmas Task is completed! Claim your reward with %s/xmastasks reward.", ChatColor.YELLOW, ChatColor.GREEN));
         else
-            p.sendMessage(currentTask.display());
+            p.sendMessage(currentTask.progress());
 
         return true;
     }

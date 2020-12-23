@@ -2,8 +2,8 @@ package ee.kmtster.xmastasks;
 
 import ee.kmtster.xmastasks.commands.XmasTaskCommandExecutor;
 import ee.kmtster.xmastasks.listeners.*;
-import org.bukkit.NamespacedKey;
-import org.bukkit.enchantments.Enchantment;
+import ee.kmtster.xmastasks.playerfiles.PlayerFilesManager;
+import ee.kmtster.xmastasks.tasks.XmasTaskManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class XmasTasksPlugin extends JavaPlugin {
@@ -14,11 +14,8 @@ public class XmasTasksPlugin extends JavaPlugin {
 
         loadConfig();
 
-// Make PlayerData Folder
-//        PlayerStatsFilePreparation playerStatsFilePreparation = new PlayerStatsFilePreparation();
-//        playerStatsFilePreparation.initializePlayerDataBase();
-
         XmasTaskManager taskManager = new XmasTaskManager();
+        PlayerFilesManager filesManager = new PlayerFilesManager(this, taskManager);
         ConfLoader loader = new ConfLoader(this, taskManager, getConfig());
 
         new XmasTaskCommandExecutor(this, taskManager);
@@ -30,6 +27,7 @@ public class XmasTasksPlugin extends JavaPlugin {
 
         new AnvilUnsafeEnchantmentListener(this);
         new RewardOpenListener(this, taskManager);
+        new PlayerJoinLeaveListener(this, filesManager);
 
     }
 

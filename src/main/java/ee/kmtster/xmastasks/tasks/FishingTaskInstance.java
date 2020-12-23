@@ -2,7 +2,7 @@ package ee.kmtster.xmastasks.tasks;
 
 import org.bukkit.ChatColor;
 
-public class FishingTaskInstance implements TaskInstance {
+public class FishingTaskInstance implements TaskInstance<FishingTask> {
     private final FishingTask task;
     private int leftToCatch;
 
@@ -29,24 +29,20 @@ public class FishingTaskInstance implements TaskInstance {
     }
 
     public String progress() {
-        return String.format("%s(Christmas Task) %s%s %sof %s%s %sleft to go.",
+        return String.format("%s(Christmas Task) %s%s %ss %sleft to catch.",
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
                 leftToCatch,
-                ChatColor.YELLOW,
-                ChatColor.GREEN,
                 task.getFishToCatch().name().toLowerCase().replace("_", " "),
                 ChatColor.YELLOW);
     }
 
     @Override
     public String display() {
-        return String.format("%sYour task is to catch %s%s %sof %s%s.",
+        return String.format("%sYour task is to catch %s%s %ss.",
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
                 leftToCatch,
-                ChatColor.YELLOW,
-                ChatColor.GREEN,
                 task.getFishToCatch().name().toLowerCase().replace("_", " "));
     }
 }

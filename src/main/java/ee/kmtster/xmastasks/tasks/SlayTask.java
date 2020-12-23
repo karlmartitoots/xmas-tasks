@@ -16,16 +16,13 @@ public class SlayTask extends XmasTask {
         this.max = max;
     }
 
+    public SlayTask(EntityType mobToKill) {
+        super("slay");
+        this.mobToKill = mobToKill;
+    }
+
     public EntityType getMobToKill() {
         return mobToKill;
-    }
-
-    public int getMin() {
-        return min;
-    }
-
-    public int getMax() {
-        return max;
     }
 
     @Override

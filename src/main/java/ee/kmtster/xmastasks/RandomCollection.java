@@ -1,7 +1,5 @@
 package ee.kmtster.xmastasks;
 
-import org.bukkit.Bukkit;
-
 import java.util.NavigableMap;
 import java.util.Random;
 import java.util.TreeMap;
@@ -28,8 +26,6 @@ public class RandomCollection<E> {
 
     public E next() {
         double value = random.nextDouble() * total;
-        Bukkit.getLogger().info(String.format("generating next: total=%s, value=%s", total, value));
-        Bukkit.getLogger().info(String.format("map: %s", map));
         return map.higherEntry(value).getValue();
     }
 

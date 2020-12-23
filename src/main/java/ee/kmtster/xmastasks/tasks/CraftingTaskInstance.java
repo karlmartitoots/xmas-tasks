@@ -2,7 +2,7 @@ package ee.kmtster.xmastasks.tasks;
 
 import org.bukkit.ChatColor;
 
-public class CraftingTaskInstance implements TaskInstance {
+public class CraftingTaskInstance implements TaskInstance<CraftingTask> {
     private final CraftingTask task;
     private int leftToCraft;
 
@@ -30,24 +30,20 @@ public class CraftingTaskInstance implements TaskInstance {
 
     @Override
     public String progress() {
-        return String.format("%s(Christmas Task) %s%s %sof %s%s %sleft to craft.",
+        return String.format("%s(Christmas Task) %s%s %ss %sleft to craft.",
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
                 leftToCraft,
-                ChatColor.YELLOW,
-                ChatColor.GREEN,
                 task.getItemToCraft().name().toLowerCase().replace("_", " "),
                 ChatColor.YELLOW);
     }
 
     @Override
     public String display() {
-        return String.format("%sYour task is to craft %s%s %sof %s%s.",
+        return String.format("%sYour task is to craft %s%s %ss.",
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
                 leftToCraft,
-                ChatColor.YELLOW,
-                ChatColor.GREEN,
                 task.getItemToCraft().name().toLowerCase().replace("_", " "));
     }
 }

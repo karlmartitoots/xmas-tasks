@@ -5,7 +5,7 @@ import org.bukkit.enchantments.Enchantment;
 
 import java.util.Map;
 
-public class EnchantedItemAcquireTaskInstance extends AcquireTaskInstance implements TaskInstance {
+public class EnchantedItemAcquireTaskInstance extends AcquireTaskInstance{
     private final AcquireTask task;
     private final Map<Enchantment, Integer> enchantments;
     private boolean finished;

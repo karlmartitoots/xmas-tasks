@@ -2,7 +2,7 @@ package ee.kmtster.xmastasks.tasks;
 
 import org.bukkit.ChatColor;
 
-public class AcquireTaskInstance implements TaskInstance {
+public class AcquireTaskInstance implements TaskInstance<AcquireTask> {
     private final AcquireTask task;
     private int amount;
     private boolean finished;
@@ -32,7 +32,7 @@ public class AcquireTaskInstance implements TaskInstance {
 
     @Override
     public String progress() {
-        return String.format("%sYour task to obtain a %s%s %sis %sfinished.",
+        return String.format("%sYour task to obtain a/an %s%s %sis %sfinished.",
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
                 task.getItemToAcquire().name().toLowerCase().replace("_", " "),
@@ -42,12 +42,10 @@ public class AcquireTaskInstance implements TaskInstance {
 
     @Override
     public String display() {
-        return String.format("%sYour task is to obtain %s%s %sof %s%s.",
+        return String.format("%sYour task is to obtain %s%s %ss.",
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
                 amount,
-                ChatColor.YELLOW,
-                ChatColor.GREEN,
                 task.getItemToAcquire().name().toLowerCase().replace("_", " "));
     }
 }
