@@ -37,7 +37,7 @@ public class AnvilUnsafeEnchantmentListener implements Listener {
             return;
 
         if (!(e.getWhoClicked() instanceof Player)) {
-            e.getWhoClicked().sendMessage("Only available to playerfiles.");
+            e.getWhoClicked().sendMessage("Only available to players.");
             return;
         }
 

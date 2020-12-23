@@ -40,7 +40,7 @@ public class XmasTaskCommandExecutor implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("Only usable by playerfiles");
+            sender.sendMessage("Only available to players");
             return true;
         }
 
