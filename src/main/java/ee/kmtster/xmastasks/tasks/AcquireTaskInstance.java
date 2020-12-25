@@ -32,9 +32,10 @@ public class AcquireTaskInstance implements TaskInstance<AcquireTask> {
 
     @Override
     public String progress() {
-        return String.format("%sYour task to obtain a/an %s%s %sis %sfinished.",
+        return String.format("%sYour task to obtain %s%s %s %sis %sfinished. Have them in your inventory to finish.",
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
+                amount,
                 task.getItemToAcquire().name().toLowerCase().replace("_", " "),
                 ChatColor.YELLOW,
                 isFinished() ? "" : "not ");

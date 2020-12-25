@@ -29,9 +29,14 @@ public class FishingTaskListener implements Listener {
 
     @EventHandler
     public void onCatchFishEvent(PlayerFishEvent e) {
-        if (e.getState() != PlayerFishEvent.State.CAUGHT_FISH) // caught something
+        plugin.getLogger().info("state "+e.getState());
+        if (e.getState() != PlayerFishEvent.State.CAUGHT_ENTITY && e.getState() != PlayerFishEvent.State.CAUGHT_FISH) // caught something
             return;
 
+        plugin.getLogger().info("Caught1 "+e.getCaught());
+        plugin.getLogger().info("caught type "+e.getCaught().getType());
+        plugin.getLogger().info("itemstack "+((Item) e.getCaught()).getItemStack());
+        plugin.getLogger().info("itemstack type "+((Item) e.getCaught()).getItemStack().getType());
         Player p = e.getPlayer();
         if (!taskManager.hasTask(p)) // has task
             return;
@@ -49,13 +54,17 @@ public class FishingTaskListener implements Listener {
         if (e.getCaught() == null) // catch is not nothing
             return;
 
+        plugin.getLogger().info("Caught2 "+e.getCaught());
+        plugin.getLogger().info("itemstack "+((Item) e.getCaught()).getItemStack());
+        plugin.getLogger().info("itemstack type "+((Item) e.getCaught()).getItemStack().getType());
+
         ItemStack caught = ((Item) e.getCaught()).getItemStack();
         if (fishingTaskInstance.getTask().getFishToCatch() == caught.getType()) // correct catch for the task
             fishingTaskInstance.decrease(caught.getAmount());
 
         if (fishingTaskInstance.isFinished()) // just finished
             p.sendMessage(String.format("%sYou have completed your Christmas Task! Claim your prize using /xmastasks reward.", ChatColor.YELLOW));
-        else if (fishingTaskInstance.getLeftToCatch() % 3 == 0)
+        else if (fishingTaskInstance.getLeftToCatch() % progressPeriod == 0)
             p.sendMessage(fishingTaskInstance.progress());
     }
 }

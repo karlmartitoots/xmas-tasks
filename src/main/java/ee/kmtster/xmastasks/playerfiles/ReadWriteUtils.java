@@ -26,9 +26,9 @@ public class ReadWriteUtils {
         }
 
         try {
-            material = Optional.of(Material.valueOf(section.getString("material")));
+            material = Optional.ofNullable(Material.matchMaterial(section.getString("material")));
         } catch (IllegalArgumentException garbage) {
-            logInvalidValue(p, section, "material");
+            logInvalidValue(p, section, "material", "a valid material");
             return material;
         }
 

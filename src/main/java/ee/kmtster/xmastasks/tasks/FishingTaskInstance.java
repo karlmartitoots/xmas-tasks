@@ -29,20 +29,23 @@ public class FishingTaskInstance implements TaskInstance<FishingTask> {
     }
 
     public String progress() {
-        return String.format("%s(Christmas Task) %s%s %ss %sleft to catch.",
+        return String.format("%s(Christmas Task) %s%s %s%s %sleft to catch.",
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
                 leftToCatch,
                 task.getFishToCatch().name().toLowerCase().replace("_", " "),
+                leftToCatch == 1 ? "" : "s",
                 ChatColor.YELLOW);
     }
 
     @Override
     public String display() {
-        return String.format("%sYour task is to catch %s%s %ss.",
+        return String.format("%sYour task is to catch %s%s %s%s %sby fishing.",
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
                 leftToCatch,
-                task.getFishToCatch().name().toLowerCase().replace("_", " "));
+                task.getFishToCatch().name().toLowerCase().replace("_", " "),
+                leftToCatch == 1 ? "" : "s",
+                ChatColor.YELLOW);
     }
 }

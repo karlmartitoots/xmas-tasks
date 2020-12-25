@@ -2,7 +2,6 @@ package ee.kmtster.xmastasks.playerfiles;
 
 import ee.kmtster.xmastasks.tasks.XmasTaskManager;
 import ee.kmtster.xmastasks.tasks.*;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -79,9 +78,9 @@ public class PlayerFilesManager {
     }
 
     private File create(UUID uuid, String playerName) {
-        File f = new File(plugin.getDataFolder(),
-                String.format("%sPlayerDatabase%s%s.yml", File.separator, File.separator, uuid.toString()));
+        File f = new File(plugin.getDataFolder(), String.format("%sPlayerDatabase%s%s.yml", File.separator, File.separator, uuid.toString()));
         add(uuid, f);
+
         FileConfiguration pfc = YamlConfiguration.loadConfiguration(f);
         pfc.set("playerName", playerName);
         try {
@@ -110,26 +109,35 @@ public class PlayerFilesManager {
         if (!taskSection.contains("type"))
             return Optional.empty();
 
-        return readers.get(taskSection.get("type")).read(p, taskSection);
+        Optional<TaskInstance> taskInstance = readers.get(taskSection.get("type")).read(p, taskSection);
+
+        taskInstance.ifPresent(
+                i -> taskManager.putTask(p, i)
+        );
+
+        return taskInstance;
     }
 
     public void writeTask(Player p) {
         File playerFile = load(p);
         FileConfiguration pfc = YamlConfiguration.loadConfiguration(playerFile);
-        if (!taskManager.hasTask(p))
-            return;
+        if (!taskManager.hasTask(p)) {
+            pfc.set("task", null);
+        } else {
 
-        if (!pfc.contains("task"))
-            pfc.createSection("task");
+            if (!pfc.contains("task"))
+                pfc.createSection("task");
 
-        ConfigurationSection taskSection = pfc.getConfigurationSection("task");
-        TaskInstance taskInstance = taskManager.readTask(p);
+            ConfigurationSection taskSection = pfc.getConfigurationSection("task");
+            TaskInstance taskInstance = taskManager.readTask(p);
 
-        writers.get(taskInstance.getClass()).write(taskSection, taskInstance);
+            writers.get(taskInstance.getClass()).write(taskSection, taskInstance);
+
+        }
 
         try {
             pfc.save(playerFile);
-            plugin.getLogger().info(String.format("Successfully saved player %s (uuid:%s) file under PlayerDatabase.", p.getName(), p.getUniqueId()));
+            plugin.getLogger().info(String.format("[XmasTasks] Successfully saved player %s (uuid:%s) file under PlayerDatabase.", p.getName(), p.getUniqueId()));
         } catch (IOException e) {
             plugin.getLogger().warning(String.format("Failed to save player %s (uuid:%s) file under PlayerDatabase.", p.getName(), p.getUniqueId()));
         }

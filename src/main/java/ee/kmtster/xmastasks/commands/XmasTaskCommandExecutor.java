@@ -1,5 +1,8 @@
 package ee.kmtster.xmastasks.commands;
 
+import ee.kmtster.xmastasks.DefaultRewards;
+import ee.kmtster.xmastasks.Leaderboard;
+import ee.kmtster.xmastasks.playerfiles.PlayerFilesManager;
 import ee.kmtster.xmastasks.tasks.XmasTaskManager;
 import ee.kmtster.xmastasks.XmasTasksPlugin;
 import ee.kmtster.xmastasks.tasks.AcquireTaskInstance;
@@ -15,19 +18,22 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.plugin.Plugin;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 import static ee.kmtster.xmastasks.tasks.XmasTaskManager.present;
 
 public class XmasTaskCommandExecutor implements TabExecutor {
+    private final static Map<UUID, Long> cooldowns = new LinkedHashMap<>();
+
     private final Plugin plugin;
+    private final Leaderboard leaderboard;
     private final XmasTaskManager taskManager;
+    private final PlayerFilesManager filesManager;
     private final List<String> options = Arrays.asList("help", "new", "current", "delete", "reward", "leaderboard");
 
-    public XmasTaskCommandExecutor(XmasTasksPlugin plugin, XmasTaskManager taskManager) {
+    public XmasTaskCommandExecutor(XmasTasksPlugin plugin, XmasTaskManager taskManager, PlayerFilesManager filesManager, Leaderboard leaderboard) {
         this.plugin = plugin;
         PluginCommand cmd = plugin.getCommand("xmastasks");
         if (cmd != null) {
@@ -35,6 +41,8 @@ public class XmasTaskCommandExecutor implements TabExecutor {
             cmd.setTabCompleter(this);
         }
         this.taskManager = taskManager;
+        this.filesManager = filesManager;
+        this.leaderboard = leaderboard;
     }
 
     @Override
@@ -75,7 +83,9 @@ public class XmasTaskCommandExecutor implements TabExecutor {
     }
 
     private boolean leaderboard(Player p) {
-        return false;
+        p.sendMessage(leaderboard.display());
+
+        return true;
     }
 
     private boolean taskReward(Player p) {
@@ -89,14 +99,23 @@ public class XmasTaskCommandExecutor implements TabExecutor {
             checkAcquireTask(p, (AcquireTaskInstance) currentTask);
 
         if (!currentTask.isFinished()) {
+
             p.sendMessage(String.format("%sYour current Christmas Task is not finished yet.", ChatColor.YELLOW));
             p.sendMessage(currentTask.progress());
+
         } else {
+
             p.sendMessage(String.format("%sWell done! Santa has given you a reward for completing the task.", ChatColor.YELLOW));
 
             p.getWorld().dropItem(p.getLocation(), present());
 
-            deleteTask(p);
+            if (!leaderboard.has(p))
+                leaderboard.add(p);
+            leaderboard.increment(p);
+
+            taskManager.deleteTask(p);
+            filesManager.writeTask(p);
+
         }
 
         return true;
@@ -108,10 +127,32 @@ public class XmasTaskCommandExecutor implements TabExecutor {
             return true;
         }
 
+        if (cooldowns.containsKey(p.getUniqueId())) {
+            long timeLeft = cooldowns.get(p.getUniqueId()) - System.currentTimeMillis();
+            if (timeLeft > 0) {
+                p.sendMessage(String.format("%sYou can not delete a Christmas Task for another %s.",
+                        ChatColor.YELLOW,
+                        displayTimeLeft(timeLeft/1000)));
+                return true;
+            }
+        }
+
         taskManager.deleteTask(p);
+        filesManager.writeTask(p);
+
         p.sendMessage(String.format("%sYour current Christmas Task has been removed.", ChatColor.YELLOW));
 
+        cooldowns.put(p.getUniqueId(), System.currentTimeMillis() + Duration.ofMinutes(5).toMillis());
+
         return true;
+    }
+
+    private String displayTimeLeft(long timeLeft) {
+        return String.format("%s%s%s %sseconds",
+                timeLeft > 60 ? String.format("%s%s %sminutes ", ChatColor.GREEN, timeLeft / 60, ChatColor.YELLOW) : "", // minutes
+                ChatColor.GREEN,
+                timeLeft % 60,  // seconds
+                ChatColor.YELLOW);
     }
 
     private boolean currentTask(Player p) {
@@ -196,6 +237,7 @@ public class XmasTaskCommandExecutor implements TabExecutor {
         if (enchantedItemAcquireTaskInstance.getTask().getItemToAcquire() == Material.ENCHANTED_BOOK) {
 
             for (Integer slot : itemsBySlot.keySet()) {
+
                 ItemStack item = itemsBySlot.get(slot);
                 if (!item.hasItemMeta()) continue;
 

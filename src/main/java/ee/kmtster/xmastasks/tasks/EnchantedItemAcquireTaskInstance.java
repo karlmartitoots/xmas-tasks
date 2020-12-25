@@ -5,16 +5,14 @@ import org.bukkit.enchantments.Enchantment;
 
 import java.util.Map;
 
-public class EnchantedItemAcquireTaskInstance extends AcquireTaskInstance{
+public class EnchantedItemAcquireTaskInstance extends AcquireTaskInstance {
     private final AcquireTask task;
     private final Map<Enchantment, Integer> enchantments;
-    private boolean finished;
 
     public EnchantedItemAcquireTaskInstance(AcquireTask task, Map<Enchantment, Integer> enchantments) {
         super(task, 1);
         this.task = task;
         this.enchantments = enchantments;
-        this.finished = false;
     }
 
     public Map<Enchantment, Integer> getEnchantments() {
@@ -22,40 +20,39 @@ public class EnchantedItemAcquireTaskInstance extends AcquireTaskInstance{
     }
 
     @Override
-    public boolean isFinished() {
-        return this.finished;
-    }
-
-    @Override
     public String progress() {
-        return String.format("%sYour task to obtain a %s%s %swith enchantments %s%s %sis %sfinished.",
+        return String.format("%sYour task to obtain %s%s %swith enchantment%s %s%s %sis %sfinished.",
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
                 task.getItemToAcquire().name().toLowerCase().replace("_", " "),
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
+                enchantments.size() == 1 ? "" : "s",
                 enchantments.keySet().stream()
                         .map(this::enchantmentToString)
-                        .reduce((s1, s2) -> s1 + ", " + s2),
+                        .reduce((s1, s2) -> s1 + ", " + s2).get(),
                 ChatColor.YELLOW,
                 isFinished() ? "" : "not ");
     }
 
     @Override
     public String display() {
-        return String.format("%sYour task is to obtain a/an %s%s %swith enchantments %s%s.",
+        return String.format("%sYour task is to obtain %s%s %swith enchantment%s %s%s.",
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
                 task.getItemToAcquire().name().toLowerCase().replace("_", " "),
                 ChatColor.YELLOW,
                 ChatColor.GREEN,
+                enchantments.size() == 1 ? "" : "s",
                 enchantments.keySet().stream()
                         .map(this::enchantmentToString)
-                        .reduce((s1, s2) -> s1 + ", " + s2));
+                        .reduce((s1, s2) -> s1 + ", " + s2).get());
     }
 
     private String enchantmentToString(Enchantment e) {
-        return e.getMaxLevel() == 1 ? e.getName() : e.getName() + " " + roman(enchantments.get(e));
+        return e.getMaxLevel() == 1 ?
+                e.getKey().getKey().toLowerCase().replace("_", " ") :
+                e.getKey().getKey().toLowerCase().replace("_", " ") + " " + roman(enchantments.get(e));
     }
 
     private String roman(int number) {

@@ -20,7 +20,7 @@ public class SlayTaskRW implements TaskReader, TaskWriter<SlayTaskInstance> {
 
     @Override
     public void write(ConfigurationSection taskSection, SlayTaskInstance taskInstance) {
-        taskSection.set("type", "acquire");
+        taskSection.set("type", "slay");
         taskSection.set("mob", taskInstance.getTask().getMobToKill().name().toLowerCase());
         taskSection.set("amount", taskInstance.getLeftToKill());
     }

@@ -45,6 +45,9 @@ public class XmasTaskManager {
         return playersTasks.remove(player.getUniqueId());
     }
 
+    public void putTask(Player player, TaskInstance t) {
+        playersTasks.put(player.getUniqueId(), t);
+    }
 
     public void addTaskCategory(String cat, int weight) {
         taskCategories.add(weight, cat);

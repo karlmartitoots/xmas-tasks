@@ -19,6 +19,7 @@ public class TradingTaskRW implements TaskReader, TaskWriter<TradingTaskInstance
 
     @Override
     public void write(ConfigurationSection taskSection, TradingTaskInstance taskInstance) {
-
+        taskSection.set("type", "trade");
+        taskSection.set("material", taskInstance.getTask().getMaterialToReceive().name().toLowerCase());
     }
 }

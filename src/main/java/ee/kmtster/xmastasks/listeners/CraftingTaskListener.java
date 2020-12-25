@@ -47,8 +47,7 @@ public class CraftingTaskListener implements Listener {
 
         craftingTaskInstance.decrease(event.getCurrentItem().getAmount());
 
-
-        if (craftingTaskInstance.isFinished()) { // already finished
+        if (craftingTaskInstance.isFinished()) { // just finished
             p.sendMessage(String.format("%sYou have completed your Christmas Task! Claim your prize using /xmastasks reward.", ChatColor.YELLOW));
         }
     }

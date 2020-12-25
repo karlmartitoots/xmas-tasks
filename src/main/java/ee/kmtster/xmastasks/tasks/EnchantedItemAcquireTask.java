@@ -1,5 +1,6 @@
 package ee.kmtster.xmastasks.tasks;
 
+import ee.kmtster.xmastasks.XmasTasksPlugin;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 
@@ -37,16 +38,16 @@ public class EnchantedItemAcquireTask extends AcquireTask {
     @Override
     public TaskInstance generate(Random random) {
         List<Enchantment> choices = new ArrayList<>(allEnchantments);
-        choices.removeIf(choice -> !choice.getItemTarget().includes(getItemToAcquire()));
+        if (getItemToAcquire() != Material.ENCHANTED_BOOK) choices.removeIf(choice -> !choice.getItemTarget().includes(getItemToAcquire()));
 
-        Map<Enchantment, Integer> enchList = new LinkedHashMap<>();
+        Map<Enchantment, Integer> enchantmentMap = new LinkedHashMap<>();
         for (String enchantment : enchantments) {
             if ("random".equalsIgnoreCase(enchantment)) {
                 Enchantment e = choices.remove(random.nextInt(choices.size()));
-                enchList.put(e, random.nextInt(1 + e.getMaxLevel()));
+                enchantmentMap.put(e, 1 + random.nextInt(e.getMaxLevel()));
             }
         }
 
-        return new EnchantedItemAcquireTaskInstance(this, enchList);
+        return new EnchantedItemAcquireTaskInstance(this, enchantmentMap);
     }
 }

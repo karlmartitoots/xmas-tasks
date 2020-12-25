@@ -42,7 +42,8 @@ public class RewardOpenListener implements Listener {
         Player p = event.getPlayer();
         p.getInventory().removeItem(presentItem);
         p.getWorld().dropItem(p.getLocation(), taskManager.nextReward());
-        p.getWorld().spawnParticle(SNOW_SHOVEL, p.getLocation(), 5);
+
         p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1, 1);
+        p.playSound(p.getLocation(), Sound.MUSIC_DRAGON, 1, 1);
     }
 }

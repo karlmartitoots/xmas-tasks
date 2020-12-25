@@ -18,7 +18,7 @@ public class EnchantedItemAcquireW implements TaskWriter<EnchantedItemAcquireTas
         Map<Enchantment, Integer> enchantments = taskInstance.getEnchantments();
         List<String> enchStrs = new ArrayList<>();
         for (Enchantment enchantment : enchantments.keySet()) {
-            enchStrs.add(String.format("%s|%s", enchantment.getKey(), enchantments.get(enchantment)));
+            enchStrs.add(String.format("%s|%s", enchantment.getKey().getKey(), enchantments.get(enchantment)));
         }
         taskSection.set("enchantments", enchStrs);
     }

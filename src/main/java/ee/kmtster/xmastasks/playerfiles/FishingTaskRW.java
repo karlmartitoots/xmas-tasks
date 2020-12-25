@@ -21,7 +21,7 @@ public class FishingTaskRW implements TaskReader, TaskWriter<FishingTaskInstance
 
     @Override
     public void write(ConfigurationSection taskSection, FishingTaskInstance taskInstance) {
-        taskSection.set("type", "acquire");
+        taskSection.set("type", "fish");
         taskSection.set("material", taskInstance.getTask().getFishToCatch().name().toLowerCase());
         taskSection.set("amount", taskInstance.getLeftToCatch());
     }

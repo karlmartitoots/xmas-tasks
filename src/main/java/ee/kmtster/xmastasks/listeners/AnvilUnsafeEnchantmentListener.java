@@ -109,7 +109,15 @@ public class AnvilUnsafeEnchantmentListener implements Listener {
 
     private void combineBooksEnchants(ItemStack result, Map<Enchantment, Integer> enchants) {
         for (Enchantment ench : enchants.keySet()) {
-            result.addUnsafeEnchantment(ench, enchants.get(ench));
+
+            if (result.containsEnchantment(ench)) {
+                int level = result.getEnchantmentLevel(ench);
+                if (level == enchants.get(ench) && ench.getMaxLevel() > level) {
+                    result.addEnchantment(ench, level + 1);
+                }
+            } else {
+                result.addUnsafeEnchantment(ench, enchants.get(ench));
+            }
         }
     }
 
