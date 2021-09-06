@@ -1,7 +1,7 @@
-fishing_progress_period: 3
-slay_progress_period: 5
+fishing_progress_period: 1
+slay_progress_period: 1
 
-tasks:
+missions:
 
   craft:
     weight: 1
@@ -535,7 +535,7 @@ tasks:
       max: 1
 
 
-  acquire:
+  obtain:
     weight: 1
 
     #### Common ####
@@ -1004,90 +1004,75 @@ tasks:
       weight: 5
       enchantments:
         - random
-        - random
 
     iron_shovel:
       weight: 5
       enchantments:
-        - random
         - random
 
     iron_axe:
       weight: 5
       enchantments:
         - random
-        - random
 
     iron_hoe:
       weight: 5
       enchantments:
-        - random
         - random
 
     iron_pickaxe:
       weight: 5
       enchantments:
         - random
-        - random
 
     diamond_sword:
       weight: 3
       enchantments:
-        - random
         - random
 
     diamond_shovel:
       weight: 3
       enchantments:
         - random
-        - random
 
     diamond_axe:
       weight: 3
       enchantments:
-        - random
         - random
 
     diamond_hoe:
       weight: 3
       enchantments:
         - random
-        - random
 
     diamond_pickaxe:
       weight: 3
       enchantments:
-        - random
         - random
 
     netherite_shovel:
       weight: 1
       enchantments:
         - random
-        - random
 
     netherite_axe:
       weight: 1
       enchantments:
-        - random
         - random
 
     netherite_hoe:
       weight: 1
       enchantments:
         - random
-        - random
 
     netherite_pickaxe:
       weight: 1
       enchantments:
         - random
-        - random
 
     netherite_sword:
       weight: 1
       enchantments:
-        - random
         - random
 
     #### Enchanted Books ####
@@ -1097,15 +1082,8 @@ tasks:
         - random
 
     enchanted_book_2:
-      weight: 30
+      weight: 1
       enchantments:
-        - random
-        - random
-
-    enchanted_book_3:
-      weight: 10
-      enchantments:
-        - random
         - random
         - random
 
@@ -1234,76 +1212,76 @@ tasks:
       weight: 1
 
 
-#  fish:
-#    weight: 1000
-#
-#    #### Fish ####
-#    cod:
-#      weight: 20
-#      min: 8
-#      max: 16
-#
-#    salmon:
-#      weight: 20
-#      min: 8
-#      max: 16
-#
-#    tropical_fish:
-#      weight: 20
-#      min: 8
-#      max: 16
-#
-#    pufferfish:
-#      weight: 20
-#      min: 8
-#      max: 16
-#
-#    #### Treasure ####
-#    enchanted_book:
-#      weight: 10
-#      min: 1
-#      max: 2
-#
-#    saddle:
-#      weight: 10
-#      min: 1
-#      max: 2
-#
-#    name_tag:
-#      weight: 100000
-#      min: 1
-#      max: 2
-#
-#    nautilus_shell:
-#      weight: 10
-#      min: 1
-#      max: 2
-#
-#    fishing_rod:
-#      weight: 10
-#      min: 1
-#      max: 2
-#
-#    bow:
-#      weight: 10
-#      min: 1
-#      max: 2
-#
-#    #### Junk ####
-#    leather:
-#      weight: 5
-#      min: 2
-#      max: 4
-#
-#    bowl:
-#      weight: 5
-#      min: 2
-#      max: 4
-#
-#    lily_pad:
-#      weight: 5
-#      min: 2
-#      max: 4
+  fish:
+    weight: 10000
+
+    #### Fish ####
+    cod:
+      weight: 200000
+      min: 8
+      max: 16
+
+    salmon:
+      weight: 20
+      min: 8
+      max: 16
+
+    tropical_fish:
+      weight: 20
+      min: 8
+      max: 16
+
+    pufferfish:
+      weight: 20
+      min: 8
+      max: 16
+
+    #### Treasure ####
+    enchanted_book:
+      weight: 10
+      min: 1
+      max: 2
+
+    saddle:
+      weight: 10
+      min: 1
+      max: 2
+
+    name_tag:
+      weight: 10
+      min: 1
+      max: 2
+
+    nautilus_shell:
+      weight: 10
+      min: 1
+      max: 2
+
+    fishing_rod:
+      weight: 10
+      min: 1
+      max: 2
+
+    bow:
+      weight: 10
+      min: 1
+      max: 2
+
+    #### Junk ####
+    leather:
+      weight: 5
+      min: 2
+      max: 4
+
+    bowl:
+      weight: 5
+      min: 2
+      max: 4
+
+    lily_pad:
+      weight: 5
+      min: 2
+      max: 4
 
 
 

@@ -1,11 +1,11 @@
-main: ee.kmtster.xmastasks.XmasTasksPlugin
-name: ChristmasTasks
+main: ee.kmtster.missions.MissionsPlugin
+name: Missions
 version: 1.0
 api-version: 1.16
-description: Christmas Tasks
+description: Missions
 author: kmtster
 
 commands:
-  xmastasks:
+  missions:
     usage: /<command>
-    description: Open the Christmas Tasks UI
+    description: Open the Missions UI
