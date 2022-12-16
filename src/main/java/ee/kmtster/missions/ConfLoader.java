@@ -12,7 +12,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.plugin.Plugin;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.logging.Logger;
 
 public class ConfLoader {
@@ -72,7 +77,6 @@ public class ConfLoader {
             info("Config.yml is missing key 'missions'.");
             return;
         }
-
 
         for (String category : this.categories) {
             if (!conf.getConfigurationSection(MISSIONS_SECTION).contains(category))
@@ -135,7 +139,7 @@ public class ConfLoader {
 
                 Map<Enchantment, Integer> enchantments = convertToEnchantments(section, enchantmentStrs);
 
-                rewards.add(()->{
+                rewards.add(() -> {
                     ItemStack reward = new ItemStack(Material.ENCHANTED_BOOK);
                     EnchantmentStorageMeta meta = (EnchantmentStorageMeta) reward.getItemMeta();
                     for (Enchantment ench : enchantments.keySet()) {

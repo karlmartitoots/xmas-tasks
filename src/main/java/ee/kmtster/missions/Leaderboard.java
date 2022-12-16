@@ -8,12 +8,16 @@ import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Leaderboard {
-    private final Map<String, Integer> missionCounts = new LinkedHashMap<>(); // playerName -> missions completed
+    private Map<String, Integer> missionCounts = new LinkedHashMap<>(); // playerName -> missions completed
     private final Plugin plugin;
 
     private final File leaderBoardsFile;
@@ -70,6 +74,10 @@ public class Leaderboard {
     public void increment(Player p) {
         if (missionCounts.containsKey(p.getName()))
             missionCounts.put(p.getName(), missionCounts.get(p.getName()) + 1);
+    }
+
+    public void reset() {
+        missionCounts = new LinkedHashMap<>();
     }
 
     public String display() {

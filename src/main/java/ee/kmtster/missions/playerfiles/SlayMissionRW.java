@@ -1,6 +1,5 @@
 package ee.kmtster.missions.playerfiles;
 
-import ee.kmtster.missions.missions.CraftingMission;
 import ee.kmtster.missions.missions.SlayMission;
 import ee.kmtster.missions.missions.SlayMissionInstance;
 import ee.kmtster.missions.missions.MissionInstance;

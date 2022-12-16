@@ -9,3 +9,4 @@ commands:
   missions:
     usage: /<command>
     description: Open the Missions UI
+    aliases: [xmastasks, xt]

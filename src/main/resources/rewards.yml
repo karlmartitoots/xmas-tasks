@@ -1,0 +1,285 @@
+enchanted_book_1:
+  weight: 3
+  enchantments:
+    - power|6
+
+enchanted_book_2:
+  weight: 3
+  enchantments:
+    - bane_of_arthropods|6
+
+enchanted_book_3:
+  weight: 3
+  enchantments:
+    - blast_protection|5
+
+enchanted_book_4:
+  weight: 3
+  enchantments:
+    - depth_strider|4
+
+enchanted_book_5:
+  weight: 3
+  enchantments:
+    - efficiency|6
+
+enchanted_book_6:
+  weight: 3
+  enchantments:
+    - feather_falling|5
+
+enchanted_book_7:
+  weight: 3
+  enchantments:
+    - fire_aspect|3
+
+enchanted_book_8:
+  weight: 3
+  enchantments:
+    - fire_protection|5
+
+enchanted_book_9:
+  weight: 3
+  enchantments:
+    - fortune|4
+
+enchanted_book_10:
+  weight: 3
+  enchantments:
+    - frost_walker|3
+
+enchanted_book_11:
+  weight: 3
+  enchantments:
+    - impaling|6
+
+enchanted_book_12:
+  weight: 3
+  enchantments:
+    - knockback|3
+
+enchanted_book_13:
+  weight: 3
+  enchantments:
+    - looting|4
+
+enchanted_book_14:
+  weight: 3
+  enchantments:
+    - loyalty|4
+
+enchanted_book_15:
+  weight: 3
+  enchantments:
+    - luck_of_the_sea|4
+
+enchanted_book_16:
+  weight: 3
+  enchantments:
+    - lure|4
+
+enchanted_book_17:
+  weight: 3
+  enchantments:
+    - piercing|5
+
+enchanted_book_18:
+  weight: 3
+  enchantments:
+    - projectile_protection|5
+
+enchanted_book_19:
+  weight: 3
+  enchantments:
+    - punch|3
+
+enchanted_book_20:
+  weight: 3
+  enchantments:
+    - quick_charge|4
+
+enchanted_book_21:
+  weight: 3
+  enchantments:
+    - respiration|4
+
+enchanted_book_22:
+  weight: 3
+  enchantments:
+    - riptide|4
+
+enchanted_book_23:
+  weight: 3
+  enchantments:
+    - sharpness|6
+
+enchanted_book_24:
+  weight: 3
+  enchantments:
+    - smite|6
+
+enchanted_book_25:
+  weight: 3
+  enchantments:
+    - soul_speed|4
+
+enchanted_book_26:
+  weight: 3
+  enchantments:
+    - sweeping|4
+
+enchanted_book_27:
+  weight: 3
+  enchantments:
+    - thorns|4
+
+enchanted_book_28:
+  weight: 3
+  enchantments:
+    - unbreaking|4
+
+
+enchanted_book_29:
+  weight: 1
+  enchantments:
+    - power|7
+
+enchanted_book_30:
+  weight: 1
+  enchantments:
+    - bane_of_arthropods|7
+
+enchanted_book_31:
+  weight: 1
+  enchantments:
+    - blast_protection|6
+
+enchanted_book_32:
+  weight: 1
+  enchantments:
+    - depth_strider|5
+
+enchanted_book_33:
+  weight: 1
+  enchantments:
+    - efficiency|7
+
+enchanted_book_34:
+  weight: 1
+  enchantments:
+    - feather_falling|6
+
+enchanted_book_35:
+  weight: 1
+  enchantments:
+    - fire_aspect|4
+
+enchanted_book_36:
+  weight: 1
+  enchantments:
+    - fire_protection|6
+
+enchanted_book_37:
+  weight: 1
+  enchantments:
+    - fortune|5
+
+enchanted_book_38:
+  weight: 1
+  enchantments:
+    - frost_walker|4
+
+enchanted_book_39:
+  weight: 1
+  enchantments:
+    - impaling|7
+
+enchanted_book_40:
+  weight: 1
+  enchantments:
+    - knockback|4
+
+enchanted_book_41:
+  weight: 1
+  enchantments:
+    - looting|5
+
+enchanted_book_42:
+  weight: 1
+  enchantments:
+    - loyalty|5
+
+enchanted_book_43:
+  weight: 1
+  enchantments:
+    - luck_of_the_sea|5
+
+enchanted_book_44:
+  weight: 1
+  enchantments:
+    - lure|5
+
+enchanted_book_45:
+  weight: 1
+  enchantments:
+    - piercing|6
+
+enchanted_book_46:
+  weight: 1
+  enchantments:
+    - projectile_protection|6
+
+enchanted_book_47:
+  weight: 2
+  enchantments:
+    - punch|4
+
+enchanted_book_48:
+  weight: 1
+  enchantments:
+    - punch|5
+
+enchanted_book_49:
+  weight: 1
+  enchantments:
+    - quick_charge|5
+
+enchanted_book_50:
+  weight: 1
+  enchantments:
+    - respiration|5
+
+enchanted_book_51:
+  weight: 1
+  enchantments:
+    - riptide|5
+
+enchanted_book_52:
+  weight: 1
+  enchantments:
+    - sharpness|7
+
+enchanted_book_53:
+  weight: 1
+  enchantments:
+    - smite|7
+
+enchanted_book_54:
+  weight: 1
+  enchantments:
+    - soul_speed|5
+
+enchanted_book_55:
+  weight: 1
+  enchantments:
+    - sweeping|5
+
+enchanted_book_56:
+  weight: 1
+  enchantments:
+    - thorns|5
+
+enchanted_book_57:
+  weight: 1
+  enchantments:
+    - unbreaking|5

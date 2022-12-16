@@ -1,16 +1,16 @@
 package ee.kmtster.missions.missions;
 
 import ee.kmtster.missions.RandomCollection;
-import ee.kmtster.missions.SkullCreator;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
 
-import java.security.SecureRandom;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Supplier;
 
 public class MissionManager {
     private final Map<UUID, MissionInstance<? extends Mission>> playersMissions = new ConcurrentHashMap<>();
@@ -27,7 +27,7 @@ public class MissionManager {
         Mission mission = missions.get(category).next();
         MissionInstance<? extends Mission> missionInstance = mission.generate(random);
 
-        playersMissions.put(player.getUniqueId(), mission.generate(random));
+        playersMissions.put(player.getUniqueId(), missionInstance);
         return missionInstance;
     }
 
@@ -65,5 +65,14 @@ public class MissionManager {
         for (Mission mission : added) {
             missions.get(category).add(mission.getWeight(), mission);
         }
+    }
+
+    public void checkObtainMission(Player p, ObtainMissionInstance missionInstance) {
+        Inventory inv = p.getInventory();
+        if (!inv.contains(missionInstance.getMission().getItemToObtain()))
+            return;
+
+        Map<Integer, ItemStack> itemsBySlot = (Map<Integer, ItemStack>) inv.all(missionInstance.getMission().getItemToObtain());
+        missionInstance.check(itemsBySlot);
     }
 }
